@@ -1,3 +1,5 @@
+package app;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -7,14 +9,14 @@
  *
  * @author USUARIO
  */
-public class ViewSnake extends javax.swing.JFrame {
+public class VentanaConfiguracion extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(ViewSnake.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(VentanaConfiguracion.class.getName());
 
     /**
      * Creates new form ViewSnake
      */
-    public ViewSnake() {
+    public VentanaConfiguracion() {
         initComponents();
     }
 
@@ -65,7 +67,7 @@ public class ViewSnake extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new ViewSnake().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new VentanaConfiguracion().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
