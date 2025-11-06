@@ -10,5 +10,8 @@ package app.model;
  * @author USUARIO
  */
 public class Food {
+
+    public Food(int titleSize, int gridWidth, int gridHeight) {
+    }
     
 }

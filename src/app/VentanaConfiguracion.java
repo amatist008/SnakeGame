@@ -1,24 +1,79 @@
-package app;
-
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
+package app;
 
+import app.panel.GamePanel;
+import app.panel.MenuSnake;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import app.panel.ConfigPanel;
+import java.awt.CardLayout;
+import java.awt.Dimension;
 /**
  *
- * @author USUARIO
+ * @author sofi
  */
 public class VentanaConfiguracion extends javax.swing.JFrame {
+    private CardLayout cardLayout = new CardLayout();
+    private JPanel mainPanel = new JPanel(cardLayout);
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(VentanaConfiguracion.class.getName());
-
-    /**
-     * Creates new form ViewSnake
-     */
-    public VentanaConfiguracion() {
-        initComponents();
+    public static final String MENU_PANEL = "Menu";
+    public static final String GAME_PANEL = "Juego";
+    public static final String CONFIG_PANEL = "Configuracion";
+    private GamePanel currentGamePanel;
+    
+    
+    public void mostrarPanelJuego(){
+        currentGamePanel = new GamePanel(this);
+        
+        mainPanel.add(currentGamePanel, GAME_PANEL);
+        cardLayout.show(mainPanel, GAME_PANEL); 
+        currentGamePanel.startGameLoop(); // <--- LLAMADA QUE INICIA EL MOVIMIENTO
+        currentGamePanel.requestFocusInWindow(); // Pide el foco
     }
+    
+    
+    public void showConfig(){
+        cardLayout.show(mainPanel, CONFIG_PANEL);
+    }
+    public void showMenu() {
+        // Esta línea hace que el CardLayout muestre la tarjeta llamada "Menu"
+        cardLayout.show(mainPanel, MENU_PANEL); 
+        System.out.println("Cambiando a Menu");
+    }
+    
+    
+    public VentanaConfiguracion() {
+        setTitle("Snake Game");
+        
+        final int WIDTH = 800;
+        final int HEIGHT = 600;
+        
+        setSize(WIDTH, HEIGHT); 
+        setPreferredSize(new Dimension(WIDTH, HEIGHT));
+        
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
+        setLocationRelativeTo(null); 
+        setResizable(false); 
+        
+        // 1. Establecer el mainPanel como contenedor principal
+        this.setContentPane(mainPanel);
+        
+        // 2. Añadir los paneles fijos (Menú y Configuración)
+        MenuSnake menuPanel = new MenuSnake(this);
+        mainPanel.add(menuPanel, MENU_PANEL);
+        
+        ConfigPanel configPanel = new ConfigPanel(this); // Asegúrate de tener ConfigPanel
+        mainPanel.add(configPanel, CONFIG_PANEL);
+        
+        // 3. Mostrar el menú al inicio
+        showMenu();
+        
+        pack();
+    }
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -29,21 +84,40 @@ public class VentanaConfiguracion extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        Panel_Logo = new javax.swing.JPanel();
+        iniciar_btn = new javax.swing.JButton();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 650, Short.MAX_VALUE)
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        javax.swing.GroupLayout Panel_LogoLayout = new javax.swing.GroupLayout(Panel_Logo);
+        Panel_Logo.setLayout(Panel_LogoLayout);
+        Panel_LogoLayout.setHorizontalGroup(
+            Panel_LogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 220, Short.MAX_VALUE)
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 331, Short.MAX_VALUE)
+        Panel_LogoLayout.setVerticalGroup(
+            Panel_LogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 110, Short.MAX_VALUE)
         );
+
+        getContentPane().add(Panel_Logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 40, 220, 110));
+
+        iniciar_btn.setText("Iniciar");
+        iniciar_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                iniciar_btnActionPerformed(evt);
+            }
+        });
+        getContentPane().add(iniciar_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 180, 120, 40));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void iniciar_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iniciar_btnActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_iniciar_btnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -61,15 +135,32 @@ public class VentanaConfiguracion extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
-            logger.log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(VentanaConfiguracion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(VentanaConfiguracion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(VentanaConfiguracion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(VentanaConfiguracion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new VentanaConfiguracion().setVisible(true));
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new VentanaConfiguracion().setVisible(true);
+            }
+        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel Panel_Logo;
+    private javax.swing.JButton iniciar_btn;
     // End of variables declaration//GEN-END:variables
+
+    private void setContentPane(GamePanel gamePanel) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
