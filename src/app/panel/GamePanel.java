@@ -75,7 +75,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
             int x = segment.x * TILE_SIZE;
             int y = segment.y * TILE_SIZE;
             
-            g2d.fillOval(x, y, TILE_SIZE, TILE_SIZE);
+            g2d.fillRect(x, y, TILE_SIZE, TILE_SIZE);
         }
         // Aquí se dibujará el tablero, la serpiente y la comida.
     }
